@@ -31,6 +31,7 @@ class LinkedList:
         while node is not None:
             if self.head.value == val:
                 self.head = node.next
+                break
             elif node.value == val:
                 past_node.next = node.next
                 break
