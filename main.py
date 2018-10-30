@@ -26,13 +26,15 @@ class LinkedList:
 
     def delete(self, val):
         node = self.head
+        past_node = self.head
+
         while node is not None:
-            if self.head is self.find(val):
-                self.head = self.find(val).next
+            if self.head.value == val:
+                self.head = node.next
+            elif node.value == val:
+                past_node.next = node.next
                 break
-            elif node.next is self.find(val):
-                node.next = self.find(val).next
-                break
+            past_node = node
             node = node.next
 
     def print_all_nodes(self):
@@ -52,5 +54,4 @@ if __name__ == "__main__":
 
     print()
     l_list.delete(4)
-    l_list.delete(2)
     l_list.print_all_nodes()
