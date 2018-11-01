@@ -38,6 +38,20 @@ class LinkedList:
             past_node = node
             node = node.next
 
+    def clear(self):
+        self.head = None
+        self.tail = None
+
+    def add(self, num, val):
+        node = self.head
+        i = 0
+        while node is not None:
+            if i == num:
+                val.next = node.next
+                node.next = val
+            i += 1
+            node = node.next
+
     def len(self):
         node = self.head
         i = 0
@@ -55,10 +69,11 @@ class LinkedList:
 
 if __name__ == "__main__":
     l_list = LinkedList()
-    l_list.add_in_tail(Node(4))
+    l_list.add_in_tail(Node(1))
     l_list.add_in_tail(Node(2))
-    l_list.add_in_tail(Node(8))
-    l_list.add_in_tail(Node(9))
-    l_list.add_in_tail(Node(9))
+    l_list.add_in_tail(Node(4))
+
     l_list.print_all_nodes()
-    print("len = {}".format(l_list.len()))
+    print()
+    l_list.add(1, Node(3))
+    l_list.print_all_nodes()
