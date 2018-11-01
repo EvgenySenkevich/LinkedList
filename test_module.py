@@ -4,6 +4,16 @@ import main
 
 class LinkTest(unittest.TestCase):
 
+    def test_node_none(self):
+        node = main.Node(5)
+        self.assertEqual(node.value, 5)
+        self.assertIsNone(node.next)
+
+    def test_none(self):
+        a_list = main.LinkedList()
+        self.assertIsNone(a_list.head)
+        self.assertIsNone(a_list.tail)
+
     def test_add_in_tail(self):
         a_list = main.LinkedList()
         a_list.add_in_tail(main.Node(1))
