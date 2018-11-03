@@ -4,6 +4,14 @@ import main
 
 class LinkTest(unittest.TestCase):
 
+    def __check_value(self, a_list, val):
+        node = a_list.head
+        while node is not None:
+            if node.value == val:
+                return True
+            node = node.next
+        return False
+
     def test_node_none(self):
         node = main.Node(5)
         self.assertEqual(node.value, 5)
@@ -21,12 +29,9 @@ class LinkTest(unittest.TestCase):
         a_list.add_in_tail(main.Node(3))
         a_list.add_in_tail(main.Node(4))
         a_list.add_in_tail(main.Node(5))
-        node = a_list.head
-        i = 1
-        while node is not None:
-            self.assertEqual(node.value, i)
-            node = node.next
-            i += 1
+        self.assertFalse(self.__check_value(a_list, 6))
+        a_list.add_in_tail(main.Node(6))
+        self.assertTrue(self.__check_value(a_list, 6))
 
     def test_find(self):
         a_list = main.LinkedList()
@@ -35,6 +40,7 @@ class LinkTest(unittest.TestCase):
         a_list.add_in_tail(main.Node(3))
         a_list.add_in_tail(main.Node(4))
         a_list.add_in_tail(main.Node(5))
+        self.assertTrue(self.__check_value(a_list, 2))
         self.assertEqual(a_list.find(2).value, 2)
 
     def test_delete(self):
@@ -44,17 +50,13 @@ class LinkTest(unittest.TestCase):
         a_list.add_in_tail(main.Node(3))
         a_list.add_in_tail(main.Node(4))
         a_list.add_in_tail(main.Node(5))
+        self.assertTrue(self.__check_value(a_list, 1))
         a_list.delete(1)
-        node = a_list.head
-        i = 2
-        while node is not None:
-
-            self.assertEqual(node.value, i)
-            node = node.next
-            i += 1
+        self.assertFalse(self.__check_value(a_list, 1))
 
     def test_len(self):
         a_list = main.LinkedList()
+        self.assertEqual(a_list.len(), 0)
         a_list.add_in_tail(main.Node(1))
         a_list.add_in_tail(main.Node(2))
         a_list.add_in_tail(main.Node(3))
