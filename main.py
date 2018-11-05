@@ -16,27 +16,48 @@ class LinkedList:
             self.tail.next = item
         self.tail = item
 
-    def find(self, val):
-        node = self.head
-        while node is not None:
-            if node.value == val:
-                return node
-            node = node.next
-        return None
+    def find(self, val, all = False):
+        if not all:
+            node = self.head
+            while node is not None:
+                if node.value == val:
+                    return node
+                node = node.next
+            return None
+        else:
+            arr = []
+            node = self.head
+            while node is not None:
+                if node.value == val:
+                    arr.append(node)
+                node = node.next
+            return arr
 
-    def delete(self, val):
-        node = self.head
-        past_node = self.head
+    def delete(self, val, all=False):
+        if not all:
+            node = self.head
+            past_node = self.head
 
-        while node is not None:
-            if self.head.value == val:
-                self.head = node.next
-                break
-            elif node.value == val:
-                past_node.next = node.next
-                break
-            past_node = node
-            node = node.next
+            while node is not None:
+                if self.head.value == val:
+                    self.head = node.next
+                    break
+                elif node.value == val:
+                    past_node.next = node.next
+                    break
+                past_node = node
+                node = node.next
+        else:
+            node = self.head
+            past_node = self.head
+
+            while node is not None:
+                if self.head.value == val:
+                    self.head = node.next
+                if node.value == val:
+                    past_node.next = node.next
+                past_node = node
+                node = node.next
 
     def clear(self):
         self.head = None
@@ -72,8 +93,12 @@ if __name__ == "__main__":
     l_list.add_in_tail(Node(1))
     l_list.add_in_tail(Node(2))
     l_list.add_in_tail(Node(4))
+    l_list.add_in_tail(Node(2))
+    l_list.add_in_tail(Node(2))
+    l_list.add_in_tail(Node(4))
 
     l_list.print_all_nodes()
     print()
-    l_list.add(1, Node(3))
+    l_list.delete(2, all=True)
     l_list.print_all_nodes()
+
