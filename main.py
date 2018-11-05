@@ -16,48 +16,33 @@ class LinkedList:
             self.tail.next = item
         self.tail = item
 
-    def find(self, val, all = False):
-        if not all:
-            node = self.head
-            while node is not None:
-                if node.value == val:
+    def find(self, val, all=False):
+        arr = []
+        node = self.head
+
+        while node is not None:
+            if node.value == val:
+                if not all:
                     return node
-                node = node.next
-            return None
-        else:
-            arr = []
-            node = self.head
-            while node is not None:
-                if node.value == val:
-                    arr.append(node)
-                node = node.next
-            return arr
+                arr.append(node)
+            node = node.next
+        return arr
 
     def delete(self, val, all=False):
-        if not all:
-            node = self.head
-            past_node = self.head
+        node = self.head
+        past_node = self.head
 
-            while node is not None:
-                if self.head.value == val:
-                    self.head = node.next
-                    break
-                elif node.value == val:
-                    past_node.next = node.next
-                    break
-                past_node = node
-                node = node.next
-        else:
-            node = self.head
-            past_node = self.head
-
-            while node is not None:
-                if self.head.value == val:
-                    self.head = node.next
-                if node.value == val:
-                    past_node.next = node.next
-                past_node = node
-                node = node.next
+        while node is not None:
+            if self.head.value == val:
+                self.head = node.next
+                if not all:
+                    return
+            if node.value == val:
+                past_node.next = node.next
+                if not all:
+                    return
+            past_node = node
+            node = node.next
 
     def clear(self):
         self.head = None
