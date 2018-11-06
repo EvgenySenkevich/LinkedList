@@ -74,6 +74,19 @@ class LinkTest(unittest.TestCase):
         a_list.add_in_tail(main.Node(5))
         self.assertEqual(a_list.len(), 5)
 
+    def test_sum(self):
+        test1 = main.LinkedList()
+        test2 = main.LinkedList()
+        test1.add_in_tail(main.Node(2))
+        test1.add_in_tail(main.Node(4))
+
+        test2.add_in_tail(main.Node(1))
+        test2.add_in_tail(main.Node(5))
+
+        sum_list = main.sum(test1, test2)
+        self.assertEqual(sum_list.head.value, 3)
+        self.assertEqual(sum_list.tail.value, 9)
+
 
 if __name__ == "__main__":
     unittest.main()

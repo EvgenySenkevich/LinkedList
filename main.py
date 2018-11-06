@@ -76,17 +76,18 @@ class LinkedList:
             node = node.next
 
 
+def sum(first, second):
+    first_node = first.head
+    second_node = second.head
+    sum_arr = LinkedList()
+
+    if first.len() == second.len():
+        while first_node is not None:
+            sum_arr.add_in_tail(Node(first_node.value+second_node.value))
+            first_node = first_node.next
+            second_node = second_node.next
+        return sum_arr
+
+
 if __name__ == "__main__":
-    l_list = LinkedList()
-    l_list.add_in_tail(Node(1))
-    l_list.add_in_tail(Node(2))
-    l_list.add_in_tail(Node(2))
-    l_list.add_in_tail(Node(3))
-    l_list.add_in_tail(Node(2))
-
-    l_list.print_all_nodes()
-    print()
-
-    l_list.delete(2, True)
-    l_list.print_all_nodes()
-
+    pass
