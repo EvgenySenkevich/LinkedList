@@ -43,7 +43,8 @@ class LinkedList:
                 past.next = node.next
                 if not all:
                     break
-            past = node
+            if node.value != val:
+                past = node
             node = node.next
 
     def clear(self):
@@ -78,6 +79,7 @@ class LinkedList:
 if __name__ == "__main__":
     l_list = LinkedList()
     l_list.add_in_tail(Node(1))
+    l_list.add_in_tail(Node(2))
     l_list.add_in_tail(Node(2))
     l_list.add_in_tail(Node(3))
     l_list.add_in_tail(Node(2))
