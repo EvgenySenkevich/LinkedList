@@ -30,19 +30,21 @@ class LinkedList:
 
     def delete(self, val, all=False):
         node = self.head
+        past = self.head
 
         if node is not None:
             if node.value == val:
                 self.head = node.next
-                return
+                if not all:
+                    return
 
         while node is not None:
             if node.value == val:
-                break
+                past.next = node.next
+                if not all:
+                    break
             past = node
             node = node.next
-
-        past.next = node.next
 
     def clear(self):
         self.head = None
@@ -78,10 +80,11 @@ if __name__ == "__main__":
     l_list.add_in_tail(Node(1))
     l_list.add_in_tail(Node(2))
     l_list.add_in_tail(Node(3))
+    l_list.add_in_tail(Node(2))
 
     l_list.print_all_nodes()
     print()
-    
-    l_list.delete(2, all=True)
+
+    l_list.delete(2, True)
     l_list.print_all_nodes()
 
