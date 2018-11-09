@@ -39,6 +39,10 @@ class LinkTest(unittest.TestCase):
         a_list.delete(2)
         self.assertFalse(self.__check_value(a_list, 2))
 
+        self.assertTrue(self.__check_value(a_list, 3))
+        a_list.delete(3)
+        self.assertFalse(self.__check_value(a_list, 3))
+
     def test_add(self):
         a_list = main.LinkedList()
         a_list.add_in_tail(main.Node(1))

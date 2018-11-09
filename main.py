@@ -66,6 +66,6 @@ if __name__ == "__main__":
     a_list.add_in_tail(Node(2))
     a_list.add_in_tail(Node(3))
     a_list.print_list()
-    a_list.add_first(Node(4))
+    a_list.add(Node(4), 3)
     print()
     a_list.print_list()
