@@ -41,6 +41,11 @@ class LinkedList:
 
     def add(self, node, val):
         main_node = self.head
+
+        if val == self.tail.value:
+            self.add_in_tail(node)
+            return
+
         while main_node is not None:
             if main_node.value == val:
                 node.next = main_node.next
